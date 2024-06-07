@@ -13,7 +13,6 @@ int main(int argc, char** argv) {
     // glfwWindowHint(GLFW_DECORATED, GLFW_FALSE);
     // glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
     GLFWwindow* window = glfwCreateWindow(1280, 720, "ImGui Example", nullptr, nullptr);
-    glfwSetWindowPos(window, 500, 100);
     if (!window) {
         glfwTerminate();
         return 1;
@@ -52,16 +51,13 @@ int main(int argc, char** argv) {
         if (displaySize.x != newSize.x || displaySize.y != newSize.y)
             glfwSetWindowSize(window, newSize.x, newSize.y);
         // вот человек как сделал перетаскивание окна: https://github.com/ocornut/imgui/issues/4389#issuecomment-892155678
-
-        // if (ImGui::IsMouseDown(ImGuiMouseButton_Left)) {
-        //     ReleaseCapture();
-        //     SendMessageW(hwnd, 0xA1, 0x2, 0);
-        // }
         
-        glfwSetWindowPos(window, x + (int)offset.x, y + (int)offset.y);
+        
         if (offset.x != 0 || offset.y != 0) 
         {
             ImGui::Text("Оно меняетчс");
+            glfwSetWindowPos(window, x + (int)offset.x, y + (int)offset.y);
+        glfwShowWindow(mainwindow);
             // glfwSetWindowPos(window, x + (int)offset.x, y + (int)offset.y);
             // ImGui::SetWindowPos(ImVec2(0, 0));
         }
